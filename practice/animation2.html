@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Web</title>
+    <style>
+      body {
+        background: #222;
+      }
+      @keyframes spaceship-ani {
+        /* 시작 변화없으면 안써도 됨 */
+        /* 0% = from, to = 100% */
+        to {
+          background-position: -2550px 0;
+        }
+      }
+      .spaceship {
+        width: 150px;
+        height: 150px;
+        /* 백그라운드 이미지 크기 설정 / (width) (height) 쓰기 */
+        /* background: url("/Users/easymovement/Workspace/interactive-web/sample/transform-animation/images/sprite_spaceship.png")
+          no-repeat 0 0 /; */
+        background: url("../sample/transform-animation/images/sprite_spaceship.png")
+          no-repeat 0 0 / auto 150px;
+        animation: spaceship-ani 1s infinite reverse steps(17);
+        /* 일반 애니메이션은 일직선으로 쭉 흘러가니까 전체 가로를 이미지사이즈로 나눠서 스템으로 적용함  */
+        /* gif는 치명적인 단점이 있음. 투명한 이미지(png)가 아니라 지저분해보임.*/
+        /* 애니메이션의 장점 : 제어할 수 있음 */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- frame by frame -->
+    <!-- 고해상도 이미지로 잘 표현되도록 기존크기의 반으로 표현함. -->
+    <div class="spaceship"></div>
+  </body>
+</html>
