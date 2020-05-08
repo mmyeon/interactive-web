@@ -14,24 +14,21 @@
       width: 100px;
       height: 100px;
       border: 2px solid black;
-      background: rgba(255, 255, 0, 0.7);
+      background: rgba(255, 255, 75, 0.7);
+      /* 애니메이션에서 중요한 건 재생시간 */
+      /* transition: 1s cubic-bezier(0.02, 1.17, 1, -0.58); */
+      /* transition: 1s 2s; */
+      /* 재생시간, 딜레이시간 */
+      /* linear 등속도, 느낌이 딱딱함 */
+      /* 기본값 ease 살짝 빨랐다가 점점 느려지는 느낌 */
+      transition: 3s;
     }
     .box:hover {
-      /* width: 200px;
-      height: 200px; */
-      /* transform: scale(2.3) rotate(15deg); */
-      /* scale(1)은 1배 */
-      /* transform: skew(30deg);  */
-      /* 비틀기 */
-      /* transform: skewY(30deg); */
-      /* transform: translate(30px, 10px); */
-      /* transform: translateX(30px); */
-      /* transform: scale(1.5); */
-      /* transform-origin: right bottom; */
-      /* 기준점 변경 */
-      transform: rotate(30deg);
-      transform-origin: 100% 100%;
-      /* 가로 서로 방향, 왼쪽 방향, 퍼센트 선호, 애매한 값도 가능 */
+      /* 트랜지션은 수치로 표현되는 숫자값의 변화가 있을 때 그 중간과정을 만들어줌 */
+      width: 200px;
+      background: red;
+      /* transform: rotate(30deg);
+      transform-origin: 100% 100%; */
     }
   </style>
   <body>
