@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Web</title>
+    <style>
+      .container {
+        /* 부모인 컨테이너에 flex주기 */
+        display: flex;
+        /* 축을 오뎅꼬치라고 생각, 가로 오뎅꼬치는 row, 세로 오뎅꼬치는 column */
+        /* flex-direction: row; */
+        /* 메인 축에서 아이템 정렬, 축 위에서 정렬, 오뎅을 꼬치 위에서 정렬한다고 생각 */
+        justify-content: flex-start;
+        /* 축이 바뀔 수 있으므로 left, right가 아니라 start, end임 */
+        /* align-items는 오뎅꼬치에서 오뎅을 잡아 뜯는 것. 오뎅꼬치의 수직 방향 */
+        align-items: stretch;
+        height: 80vh;
+        background: gray;
+      }
+      .item {
+        /* 숫자를 넣으면 아이템이 알아서 같은 비율로 늘어남 */
+        /* 이때 전체 비율이 아니라 컨텐츠를 제외한 여백의 비율임 */
+        /* flex-grow: 1; */
+        /* 컨텐츠를 포함하여 균등하게 나눠줌 */
+        /* flex-basis: 0; */
+        /* flex축약형으로 쓰기 (flex-grow = 1, flex-basis : 0%) */
+        flex: 1;
+        /* padding: 2em; */
+        border: 3px solid black;
+        font-size: 3rem;
+        background: white;
+      }
+      .item:nth-child(1) {
+        flex-grow: 1;
+      }
+      .item:nth-child(2) {
+        flex-grow: 5;
+      }
+      .item:nth-child(3) {
+        flex-grow: 2;
+      }
+      .item:nth-child(4) {
+        flex-grow: 3;
+      }
+      .item:nth-child(5) {
+        flex-grow: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- flex는 축이 한 방향, grid는 격자로 축이 가로, 세로 동시에 두 방향 -->
+    <!-- grid로 전체 축 잡고 flex로 내부 축 잡으면 좋음 -->
+    <div class="container">
+      <div class="item">AAA</div>
+      <div class="item">B</div>
+      <div class="item">CCCCCC</div>
+      <div class="item">DDD</div>
+      <div class="item">E</div>
+    </div>
+  </body>
+</html>
