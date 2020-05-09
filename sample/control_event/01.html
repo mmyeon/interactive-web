@@ -1,52 +1,74 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Interactive Web</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <style>
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-        .characters {
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            background: #fff000;
-        }
-        .ilbuni {
-            width: 100px;
-            cursor: pointer;
-        }
-        .characters .ilbuni {
-            display: inline-block;
-        }
-        .special {
-            border: 10px dashed red;
-        }
-    </style>
-</head>
-<body>
-    <div class="characters">
-        <div class="ilbuni a">
-            <img src="images/ilbuni_0.png" alt="일분이">
-        </div>
-        <div class="ilbuni b">
-            <img src="images/ilbuni_1.png" alt="일분이">
-        </div>
-        <div class="ilbuni c">
-            <img src="images/ilbuni_2.png" alt="일분이">
-        </div>
-        <div class="ilbuni d">
-            <img src="images/ilbuni_3.png" alt="일분이">
-        </div>
-    </div>
+    <link rel="stylesheet" href="css/reset.css" />
+    <!-- <script>  
+      //   window.addEventListener("load", function () {
+      window.addEventListener("DOMContentLoaded", function () {
+        const ilbuni = document.querySelector(".ilbuni:nth-child(3)");
 
+        function clickIlbuniHandler() {
+          ilbuni.classList.toggle("special");
+        }
+
+        ilbuni.addEventListener("click", clickIlbuniHandler);
+      });
+    </script> -->
+    <style>
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+      .characters {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background: #fff000;
+      }
+      .ilbuni {
+        width: 100px;
+        cursor: pointer;
+      }
+      .characters .ilbuni {
+        display: inline-block;
+      }
+      .special {
+        border: 10px dashed red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="characters">
+      <div class="ilbuni a">
+        <img src="images/ilbuni_0.png" alt="일분이" />
+      </div>
+      <div class="ilbuni b">
+        <img src="images/ilbuni_1.png" alt="일분이" />
+      </div>
+      <div class="ilbuni c">
+        <img src="images/ilbuni_2.png" alt="일분이" />
+      </div>
+      <div class="ilbuni d">
+        <img src="images/ilbuni_3.png" alt="일분이" />
+      </div>
+    </div>
     <script>
-        // 직접 타이핑 해보세요
+      // 전역변수 : 어디서든 접근할 수 있는 변수, 모두가 공유하는 공간.
+      // 전역변수를 최소화 하는 게 중요
+      // 함수 전체를 괄호로 감싸서 문법 에러 피하기
+      (function () {
+        const ilbuni = document.querySelector(".ilbuni:nth-child(3)");
+
+        const clickIlbuniHandler = () => {
+          ilbuni.classList.toggle("special");
+        };
+
+        ilbuni.addEventListener("click", clickIlbuniHandler);
+      })();
     </script>
-</body>
+  </body>
 </html>
