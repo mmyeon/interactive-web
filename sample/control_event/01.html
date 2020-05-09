@@ -6,18 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Interactive Web</title>
     <link rel="stylesheet" href="css/reset.css" />
-    <!-- <script>  
-      //   window.addEventListener("load", function () {
-      window.addEventListener("DOMContentLoaded", function () {
-        const ilbuni = document.querySelector(".ilbuni:nth-child(3)");
-
-        function clickIlbuniHandler() {
-          ilbuni.classList.toggle("special");
-        }
-
-        ilbuni.addEventListener("click", clickIlbuniHandler);
-      });
-    </script> -->
     <style>
       img {
         max-width: 100%;
@@ -57,17 +45,16 @@
       </div>
     </div>
     <script>
-      // 전역변수 : 어디서든 접근할 수 있는 변수, 모두가 공유하는 공간.
-      // 전역변수를 최소화 하는 게 중요
-      // 함수 전체를 괄호로 감싸서 문법 에러 피하기
       (function () {
-        const ilbuni = document.querySelector(".ilbuni:nth-child(3)");
+        const characters = document.querySelector(".characters");
 
-        const clickIlbuniHandler = () => {
-          ilbuni.classList.toggle("special");
-        };
+        function clickHandler(e) {
+          //   console.log(this);
+          //   console.log(e.currentTarget);
+          console.log(e.target);
+        }
 
-        ilbuni.addEventListener("click", clickIlbuniHandler);
+        characters.addEventListener("click", clickHandler);
       })();
     </script>
   </body>
