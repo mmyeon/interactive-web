@@ -15,21 +15,18 @@
     </div>
     <script>
       (function () {
-        const ilbuniGroup = document.querySelectorAll(".ilbuni");
-        // removeChild를 쓰기 위해 부모요소를 가져온다
+        // 이벤트 위임
         const stage = document.querySelector(".stage");
 
         function clickHandler(e) {
-          // console.log(this);
-          // console.log(e.currentTarget);
-          // stage.removeChild(this);
-          // stage.removeChild(e.currentTarget);
-          this.parentNode.removeChild(this);
+          // console.log(e.target);
+          // 여기에 있는 클래스 이름을 가지고 있는지 아닌지를 true, false로 알려줌
+          if (e.target.classList.contains("ilbuni")) {
+            stage.removeChild(e.target);
+          }
         }
-
-        for (let i = 0; i < ilbuniGroup.length; i++) {
-          ilbuniGroup[i].addEventListener("click", clickHandler);
-        }
+        // 이벤트 핸들러를 부모에 한번만 위임함, 메모리 적게 사용함.
+        stage.addEventListener("click", clickHandler);
       })();
     </script>
   </body>
