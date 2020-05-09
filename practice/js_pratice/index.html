@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Web</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="stage">
+      <div class="ilbuni"></div>
+      <div class="ilbuni"></div>
+      <div class="ilbuni"></div>
+    </div>
+    <script>
+      (function () {
+        const ilbuniGroup = document.querySelectorAll(".ilbuni");
+        // removeChild를 쓰기 위해 부모요소를 가져온다
+        const stage = document.querySelector(".stage");
+
+        function clickHandler(e) {
+          // console.log(this);
+          // console.log(e.currentTarget);
+          // stage.removeChild(this);
+          // stage.removeChild(e.currentTarget);
+          this.parentNode.removeChild(this);
+        }
+
+        for (let i = 0; i < ilbuniGroup.length; i++) {
+          ilbuniGroup[i].addEventListener("click", clickHandler);
+        }
+      })();
+    </script>
+  </body>
+</html>

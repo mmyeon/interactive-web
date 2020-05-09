@@ -1,0 +1,57 @@
+.stage {
+  /* 삐져나갔을 때 스크롤이 생기지 않도록 설정 */
+  overflow: hidden;
+  /* 기준이 되도록 포지션 적용 */
+  position: relative;
+  /* vw : viewport width */
+  /* vh : viewport width */
+  /* width에 따라 조절되길 바라므로 vw사용 */
+  width: 100vw;
+  height: 75vw;
+  background: #fff000;
+}
+
+@keyframes moving {
+  from {
+    /* 현재 위치에서 시작 */
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(90vw);
+  }
+}
+
+.ilbuni {
+  /* 위치를 움직이도록 변경하기 위해서 absolute 적용 */
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-repeat: no-repeat;
+  /* 백그라운드 가운데 오도록 설정 */
+  background-position: 50% 50%;
+  /* 이미지가 잘리지 않고 틀에 꽉 차도록 표현. 이미지가 다 보임*/
+  /* cover는 완전 꽉차서 이미지가 잘릴 수 있음. */
+  background-size: contain;
+  /* background-size: cover; */
+  /* animation: moving 3s infinite alternate; */
+  animation: moving infinite alternate;
+}
+
+.ilbuni:nth-of-type(1) {
+  left: 5%;
+  bottom: 5%;
+  background-image: url("../images/ilbuni_0.png");
+  animation-duration: 2s;
+}
+.ilbuni:nth-of-type(2) {
+  left: 10%;
+  bottom: 3%;
+  background-image: url("../images/ilbuni_1.png");
+  animation-duration: 3s;
+}
+.ilbuni:nth-of-type(3) {
+  left: 7%;
+  bottom: 10%;
+  background-image: url("../images/ilbuni_2.png");
+  animation-duration: 4s;
+}
