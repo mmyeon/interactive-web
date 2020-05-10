@@ -18,8 +18,7 @@
         position: relative;
         width: 100px;
         height: 150px;
-        /* 작업을 위한 아웃라인 */
-        /* outline: 2px dashed yellow; */
+        /* 3D 공간 만들어주기 */
       }
       .door-back {
         position: absolute;
@@ -28,6 +27,7 @@
         width: 100%;
         height: 100%;
         background: black;
+        overflow: hidden;
       }
       .ilbuni {
         position: absolute;
@@ -38,17 +38,20 @@
         background-repeat: no-repeat;
         background-position: 50% 100%;
         background-size: contain;
-        /* 작업을 위한 아웃라인 */
-        /* outline: 2px dashed red; */
+        transition: 0.5s 0.5s;
+        /* 애니메이션 효과가 0.5s동안 재생되는데 바로 시작하지 말고 0.5s 후에 시작하세요 */
+        /* transition-duration, transition-delay*/
+
+        transform: translate3d(100%, 0, 0);
       }
       .door:nth-child(1) .ilbuni {
-        background-image: url("./images/ilbuni_1.png");
+        background-image: url("./images/ilbuni_0.png");
       }
       .door:nth-child(2) .ilbuni {
-        background-image: url("./images/ilbuni_2.png");
+        background-image: url("./images/ilbuni_1.png");
       }
       .door:nth-child(3) .ilbuni {
-        background-image: url("./images/ilbuni_3.png");
+        background-image: url("./images/ilbuni_2.png");
       }
       .door-body {
         position: absolute;
@@ -56,6 +59,8 @@
         top: 0;
         width: 100%;
         height: 100%;
+        transition: 0.5s;
+        transform-origin: 0%;
       }
       .door:nth-child(1) .door-body {
         background: rgba(255, 0, 0, 0.7);
@@ -66,23 +71,32 @@
       .door:nth-child(3) .door-body {
         background: rgba(0, 0, 255, 0.7);
       }
+      .door:hover .door-body {
+        transform: perspective(800px) rotateY(-110deg);
+      }
+      .door:hover .ilbuni {
+        transform: translate3d(0, 0, 0);
+      }
     </style>
   </head>
   <body>
     <div class="stage">
       <div class="door">
-        <div class="door-back"></div>
-        <div class="ilbuni"></div>
+        <div class="door-back">
+          <div class="ilbuni"></div>
+        </div>
         <div class="door-body"></div>
       </div>
       <div class="door">
-        <div class="door-back"></div>
-        <div class="ilbuni"></div>
+        <div class="door-back">
+          <div class="ilbuni"></div>
+        </div>
         <div class="door-body"></div>
       </div>
       <div class="door">
-        <div class="door-back"></div>
-        <div class="ilbuni"></div>
+        <div class="door-back">
+          <div class="ilbuni"></div>
+        </div>
         <div class="door-body"></div>
       </div>
     </div>
