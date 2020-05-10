@@ -69,10 +69,6 @@
         /* pointer-events: none; */
       }
     </style>
-    <!-- <script src="IlbuniPointer.js"></script>
-    <script>
-      window.addEventListener("DOMContentLoaded", () => new IlbuniPointer());
-    </script> -->
   </head>
   <body>
     <div class="menu">
@@ -96,7 +92,7 @@
       function clickBtnHandler(e) {
         // if (e.target.classList.contains("menu-btn")) {
         //   console.log(e.target);
-        //   //   menu.removeChild(".menu-btn");
+        //   menu.removeChild(".menu-btn");
         // }
         // console.log(e.target.getAttribute("data-value"));
         let elem = event.target;
@@ -120,25 +116,5 @@
 
       menu.addEventListener("click", clickBtnHandler);
     </script>
-
-    <!-- <script>
-      const menu = document.querySelector(".menu");
-
-      function clickHandler(event) {
-        let elem = event.target;
-        while (!elem.classList.contains("menu-btn")) {
-          elem = elem.parentNode;
-
-          if (elem.nodeName == "BODY") {
-            elem = null;
-            return;
-          }
-        }
-
-        console.log(elem.dataset.value);
-      }
-
-      menu.addEventListener("click", clickHandler);
-    </script> -->
   </body>
 </html>
