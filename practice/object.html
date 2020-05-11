@@ -8,40 +8,27 @@
   <body>
     <h1>Object</h1>
     <script>
-      const person = {
-        name: "일분이",
-        age: 13,
-        introduce: function () {
+      // 생성자 함수 (constructor)
+      function Person(nickname, age) {
+        this.nickname = nickname;
+        this.age = age;
+        this.introduce = function () {
           console.log(
             "안녕하세요? 저는 " +
-              this.name +
+              this.nickname +
               " 이고 나이는 " +
               this.age +
               "이에요"
           );
-        },
-      };
-
-      //  let foo; 처럼 전역 영역에 선언된 것과 같다.
-      function foo() {
-        console.log(this); // window 전역객체
+        };
       }
-      foo();
-
-      const person2 = {
-        name: "이분이",
-        age: 1,
-        introduce: function () {
-          console.log(
-            "안녕하세요? 저는 " +
-              this.name +
-              " 이고 나이는 " +
-              this.age +
-              "이에요"
-          );
-        },
-      };
-      person.introduce();
+      // 함수가 생성자로서 호출이 되게 하고 싶으면 new 키워드 붙이기.
+      // 인스턴스 (instance)
+      const person1 = new Person("일분이", 13);
+      const person2 = new Person("이분이", 8);
+      console.log(person1);
+      console.log(person2);
+      person1.introduce();
       person2.introduce();
     </script>
   </body>
