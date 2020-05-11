@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object</title>
+  </head>
+  <body>
+    <h1>Object</h1>
+    <script>
+      const person = {
+        name: "일분이",
+        age: 13,
+        introduce: function () {
+          console.log(
+            "안녕하세요? 저는 " +
+              this.name +
+              " 이고 나이는 " +
+              this.age +
+              "이에요"
+          );
+        },
+      };
+
+      //  let foo; 처럼 전역 영역에 선언된 것과 같다.
+      function foo() {
+        console.log(this); // window 전역객체
+      }
+      foo();
+
+      const person2 = {
+        name: "이분이",
+        age: 1,
+        introduce: function () {
+          console.log(
+            "안녕하세요? 저는 " +
+              this.name +
+              " 이고 나이는 " +
+              this.age +
+              "이에요"
+          );
+        },
+      };
+      person.introduce();
+      person2.introduce();
+    </script>
+  </body>
+</html>
