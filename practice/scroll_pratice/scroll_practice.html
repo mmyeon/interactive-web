@@ -34,6 +34,7 @@
         width: 100px;
         /* margin 이용한 중앙정렬 */
         margin: 20px auto;
+        transition: 0.5s;
       }
       .ilbuni.zoom {
         /* 크기가 2배로 증가함 */
@@ -65,10 +66,34 @@
     <script>
       (function () {
         const outputElem = document.querySelector(".output");
+        const ilbuniElem = document.querySelector(".ilbuni");
+
         // 스크롤 얼만큼 됐는지 인식하기
+        function showValue() {
+          //  outputElem.innerHTML = window.pageYOffset;
+          // 일분이 위치 가져오기(속성 사용)
+          //   outputElem.innerHTML = ilbuniElem.offsetTop;
+          //   일분이 위치 가져오기(메서드 사용), 일분이의 크기와 위치를 알려주는 객체를 리턴함.
+          //   console.log(ilbuniElem.getBoundingClientRect());
+          //   posY = positionY
+          let posY = ilbuniElem.getBoundingClientRect().top;
+          outputElem.innerHTML = posY;
+          // 브라우저의 높이 알아보기
+          //   console.log(window.innerHeight);
+
+          if (posY < window.innerHeight * 0.2) {
+            ilbuniElem.classList.add("zoom");
+          } else {
+            ilbuniElem.classList.remove("zoom");
+          }
+        }
+        // 이벤트 리스너 추가, 이벤트가 발생할 떄 핸들러 함수 호출해. 핸들러함수는 아직 호출 안되고 등록만 된다,
         window.addEventListener("scroll", function () {
-          outputElem.innerHTML = window.pageYOffset;
+          showValue();
         });
+
+        // 이벤트가 발생하기 전에 초기 화면 보여줌
+        showValue();
       })();
     </script>
   </body>
