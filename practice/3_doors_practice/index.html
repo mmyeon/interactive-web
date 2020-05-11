@@ -100,27 +100,36 @@
     <script>
       (function () {
         const stageElem = document.querySelector(".stage");
-        // 현재 활성화된 아이템(열린 문)을 저장하는 변수, 바뀌는 값.
         let currentItem;
+
+        // 활성화 (문 열기)
+        function activate(elem) {
+          elem.classList.add("door-opened");
+          // 갱신
+          currentItem = elem;
+        }
+
+        // 비활성화 (문 닫기)
+        function inactivate(elem) {
+          elem.classList.remove("door-opened");
+        }
 
         function doorHandler(e) {
           const targetElem = e.target;
 
-          // 열린 문 닫기(currentItem 비활성화)
-          // const currentItem = document.querySelector(".door-opened");
           if (currentItem) {
-            currentItem.classList.remove("door-opened");
+            inactivate(currentItem);
           }
 
           if (targetElem.classList.contains("door-body")) {
-            targetElem.parentNode.classList.add("door-opened");
-            // currentItem 활성화
-            currentItem = targetElem.parentNode;
-            console.log(currentItem);
+            activate(targetElem.parentNode);
           }
         }
 
         stageElem.addEventListener("click", doorHandler);
+
+        // 열린 상태로 시작
+        activate(document.querySelector(".door:nth-child(2)"));
       })();
     </script>
   </body>
