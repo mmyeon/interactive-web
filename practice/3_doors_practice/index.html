@@ -68,12 +68,6 @@
       .door:nth-child(3) .door-body {
         background: rgba(0, 0, 255, 0.7);
       }
-      /* .door:hover .door-body {
-        transform: perspective(800px) rotateY(-110deg);
-      }
-      .door:hover .ilbuni {
-        transform: translate3d(0, 0, 0);
-      } */
       .door-opened .door-body {
         transform: perspective(800px) rotateY(-110deg);
       }
@@ -105,14 +99,24 @@
     </div>
     <script>
       (function () {
-        // 클릭할 부분(door-body)이 아닌 부모에 이벤트 위임하기
         const stageElem = document.querySelector(".stage");
+        // 현재 활성화된 아이템(열린 문)을 저장하는 변수, 바뀌는 값.
+        let currentItem;
 
         function doorHandler(e) {
-          // 이벤트 객체의 타겟잡기(클릭한 element 나타냄)
           const targetElem = e.target;
+
+          // 열린 문 닫기(currentItem 비활성화)
+          // const currentItem = document.querySelector(".door-opened");
+          if (currentItem) {
+            currentItem.classList.remove("door-opened");
+          }
+
           if (targetElem.classList.contains("door-body")) {
             targetElem.parentNode.classList.add("door-opened");
+            // currentItem 활성화
+            currentItem = targetElem.parentNode;
+            console.log(currentItem);
           }
         }
 
