@@ -18,7 +18,6 @@
         position: relative;
         width: 100px;
         height: 150px;
-        /* 3D 공간 만들어주기 */
       }
       .door-back {
         position: absolute;
@@ -39,8 +38,6 @@
         background-position: 50% 100%;
         background-size: contain;
         transition: 0.5s 0.5s;
-        /* 애니메이션 효과가 0.5s동안 재생되는데 바로 시작하지 말고 0.5s 후에 시작하세요 */
-        /* transition-duration, transition-delay*/
 
         transform: translate3d(100%, 0, 0);
       }
@@ -71,10 +68,16 @@
       .door:nth-child(3) .door-body {
         background: rgba(0, 0, 255, 0.7);
       }
-      .door:hover .door-body {
+      /* .door:hover .door-body {
         transform: perspective(800px) rotateY(-110deg);
       }
       .door:hover .ilbuni {
+        transform: translate3d(0, 0, 0);
+      } */
+      .door-opened .door-body {
+        transform: perspective(800px) rotateY(-110deg);
+      }
+      .door-opened .ilbuni {
         transform: translate3d(0, 0, 0);
       }
     </style>
@@ -82,7 +85,7 @@
   <body>
     <div class="stage">
       <div class="door">
-        <div class="door-back">
+        <div class="door-back" data-set="1">
           <div class="ilbuni"></div>
         </div>
         <div class="door-body"></div>
@@ -100,5 +103,21 @@
         <div class="door-body"></div>
       </div>
     </div>
+    <script>
+      (function () {
+        // 클릭할 부분(door-body)이 아닌 부모에 이벤트 위임하기
+        const stageElem = document.querySelector(".stage");
+
+        function doorHandler(e) {
+          // 이벤트 객체의 타겟잡기(클릭한 element 나타냄)
+          const targetElem = e.target;
+          if (targetElem.classList.contains("door-body")) {
+            targetElem.parentNode.classList.add("door-opened");
+          }
+        }
+
+        stageElem.addEventListener("click", doorHandler);
+      })();
+    </script>
   </body>
 </html>
