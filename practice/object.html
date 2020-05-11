@@ -9,25 +9,35 @@
     <h1>Object</h1>
     <script>
       // 생성자 함수 (constructor)
+      // introduce는 변하는 게 없기 떄문에 하나만 만들고 공유하는게 메모리 절약됨.
       function Person(nickname, age) {
         this.nickname = nickname;
         this.age = age;
-        this.introduce = function () {
-          console.log(
-            "안녕하세요? 저는 " +
-              this.nickname +
-              " 이고 나이는 " +
-              this.age +
-              "이에요"
-          );
-        };
+        // this.introduce = function () {
+        //   console.log(
+        //     "안녕하세요? 저는 " +
+        //       this.nickname +
+        //       " 이고 나이는 " +
+        //       this.age +
+        //       "이에요"
+        //   );
+        // };
       }
-      // 함수가 생성자로서 호출이 되게 하고 싶으면 new 키워드 붙이기.
-      // 인스턴스 (instance)
+      // 프로토타입 객체는 함수에 딱 하나만 존재하고, 개별 인스턴스가 공유하는 속성을 넣어둠.
+      Person.prototype.introduce = function () {
+        console.log(
+          "안녕하세요? 저는 " +
+            this.nickname +
+            " 이고 나이는 " +
+            this.age +
+            "이에요"
+        );
+      };
+
+      // 인스턴스 (instance) 객체
       const person1 = new Person("일분이", 13);
       const person2 = new Person("이분이", 8);
-      console.log(person1);
-      console.log(person2);
+
       person1.introduce();
       person2.introduce();
     </script>
