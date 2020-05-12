@@ -52,13 +52,30 @@ body {
   transform: rotateY(90deg) translateZ(-500vw);
   /* 중심을 기준으로 회전하므로 width의 반(500vw)만큼 이동해주기. */
   /* left: -500vw; */
+  background: #f8f8f8;
 }
+
 .wall-right {
   /* left: -500vw; */
   /* transform: rotateY(90deg) translateZ(100vw); */
   width: 1000vw;
   /* 3D공간에서 z축으로 이동 */
   transform: rotateY(90deg) translateZ(-400vw);
+  background: #f8f8f8;
+}
+
+/* 양수는 앞으로 튀어나와보이고, 음수는 뒤로 간 것처럼 보임 */
+.wall-front-a {
+  transform: translateZ(300vw);
+}
+.wall-front-b {
+  transform: translateZ(50vw);
+}
+.wall-front-c {
+  transform: translateZ(-200vw);
+}
+.wall-front-d {
+  transform: translateZ(-500vw);
 }
 
 .wall-content {
