@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setTimeout</title>
+    <style>
+      .btn {
+        font-size: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn">취소</button>
+    <!-- 지연시킬 의도로  setTimeout 사용함.  -->
+    <script>
+      // 1000ms = 1s
+      // 1s 뒤에 함수를 시작하세요.
+      //   setTimeout(function () {
+      //     console.log("setTimeout!");
+      //   }, 1000);
+
+      let timeId;
+      const btn = document.querySelector(".btn");
+
+      function sample() {
+        console.log("sample!");
+      }
+      //  setTimeout이 리턴한 숫자값을  timeId에 할당함.
+      timeId = setTimeout(sample, 3000);
+
+      //   console.log(timeId); // 1
+
+      // setTimeout이 리턴한 값을 넣어주면 타이머 취소됨.실행안됨.
+      //   clearTimeout(timeId);
+
+      btn.addEventListener("click", function () {
+        clearTimeout(timeId);
+      });
+    </script>
+  </body>
+</html>
