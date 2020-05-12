@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transition/Animation Event</title>
+    <style>
+      .ball {
+        /* 여백 남지 않도록 포지션 적용 */
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 30px;
+        height: 30px;
+        /* 공의 중심이 왼쪽 위가 아닌 공의 센터로 바꿈. 클릭한 위치에 공의 센터가 오도록 마진 적용 */
+        /* margin: -15px 0 0 -15px; */
+        border-radius: 50%;
+        background: red;
+        transition: 1s;
+      }
+      .ball.end {
+        background: dodgerblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ball"></div>
+    <script>
+      const ballElem = document.querySelector(".ball");
+      window.addEventListener("click", clickHandler);
+
+      // 트랜지션이 끝나면 이벤트핸들러 호출되도록 등록
+      ballElem.addEventListener("transitionend", function (e) {
+        ballElem.classList.add("end");
+        // 트랜지션이 재생되는데 시간이 얼마나 경과헀는지 찍히는 속성. transition-duration 속성의 값이 나옴
+        console.log(e.elapsedTime);
+        // 프랜지션이 일어날 떄 프로퍼티의 네임을 알려줌(무엇이 변했는지)
+        console.log(e.propertyName);
+      });
+
+      function clickHandler(e) {
+        ballElem.classList.remove("end");
+        // 클릭한 위치 알려주기
+        // console.log(e.clientX);
+        // console.log(e.clientY);
+        // 클릭한 위치로 공이 움직이기
+        ballElem.style.transform =
+          "translate(" + (e.clientX - 15) + "px," + (e.clientY - 15) + "px)";
+      }
+
+      // transitionstart
+      // transitionend
+    </script>
+  </body>
+</html>
