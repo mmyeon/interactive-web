@@ -1,0 +1,73 @@
+/* reset */
+
+body {
+  font-family: "Apple SD Gothic Neo", "Roboto", "Noto Sans KR", NanumGothic,
+    "Malgun Gothic", sans-serif;
+  -webkit-overflow-scrolling: touch;
+  color: #555;
+  background: #fff000;
+  transition: background 0.5s;
+}
+
+.world {
+  /* 스크롤시 문서가 위로 올라가지 않도록 고정 */
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  /* 공간 자체를 3D공간으로 만듦 */
+  perspective: 1000px;
+}
+
+.stage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  /* 부모의 3D공간을 자식들까지 전달되도록 세팅해주기 */
+  transform-style: preserve-3d;
+}
+
+.house {
+  width: 100vw;
+  height: 100vh;
+  transform: translateZ(-490vw);
+  transform-style: preserve-3d;
+}
+
+.wall {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.wall-left {
+  width: 1000vw;
+  /* Y축을 기준으로 90도 회전함 */
+  transform: rotateY(90deg) translateZ(-500vw);
+  /* 중심을 기준으로 회전하므로 width의 반(500vw)만큼 이동해주기. */
+  /* left: -500vw; */
+}
+.wall-right {
+  /* left: -500vw; */
+  /* transform: rotateY(90deg) translateZ(100vw); */
+  width: 1000vw;
+  /* 3D공간에서 z축으로 이동 */
+  transform: rotateY(90deg) translateZ(-400vw);
+}
+
+.wall-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.wall-title {
+  font-size: 5rem;
+}
