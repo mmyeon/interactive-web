@@ -1,6 +1,7 @@
 /* reset */
-
 body {
+  /* 스크롤 되도록 뷰포트의 5배로 설정*/
+  height: 500vw;
   font-family: "Apple SD Gothic Neo", "Roboto", "Noto Sans KR", NanumGothic,
     "Malgun Gothic", sans-serif;
   -webkit-overflow-scrolling: touch;
@@ -33,6 +34,7 @@ body {
 .house {
   width: 100vw;
   height: 100vh;
+  /* 원래는 화면 꽉찬 것이었는데 멀리 있는 것처럼 보이기 위해서 적용 */
   transform: translateZ(-490vw);
   transform-style: preserve-3d;
 }
