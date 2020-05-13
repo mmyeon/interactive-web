@@ -5,6 +5,22 @@
   }
 }
 
+@keyframes ani-running-leg {
+  from {
+    transform: rotateX(-30deg);
+  }
+  to {
+    transform: rotateX(30deg);
+  }
+}
+@keyframes ani-running-arm {
+  from {
+    transform: rotateY(-30deg);
+  }
+  to {
+    transform: rotateY(30deg);
+  }
+}
 /* reset */
 body {
   /* 스크롤 되도록 뷰포트의 5배로 설정*/
@@ -256,6 +272,7 @@ body {
 .character.running .character-leg-right {
   animation: ani-running-leg 0.2s alternate infinite linear;
 }
+/* linear 같은 속도로(가속도 없음) */
 .character.running .character-leg-left {
   animation: ani-running-leg 0.2s alternate-reverse infinite linear;
 }
