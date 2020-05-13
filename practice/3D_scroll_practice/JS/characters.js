@@ -1,5 +1,5 @@
 // 생성자 함수 만들기
-function Character() {
+function Character(info) {
   // 캐릭터 생성자를 통해 만들어낼 인스턴스 객체의 속성으로 쓰겠다(mainElem 자체를)
   this.mainElem = document.createElement("div");
   this.mainElem.classList.add("character");
@@ -32,4 +32,9 @@ function Character() {
 
   //   조립해서 스테이지의 하위 요소(자식)로 들어가야 됨
   document.querySelector(".stage").appendChild(this.mainElem);
+
+  //   매개변수로 전달된 객체 잘 받아오는지 확인
+  //   console.log(info);
+  //    캐릭터의 left값으로 클릭된 위치를 넣음
+  this.mainElem.style.left = info.xPos + "%";
 }

@@ -57,5 +57,15 @@
   // 윈도우 객체에 리사이즈 이벤트 걸어줌
   window.addEventListener("resize", resizeHandler);
   resizeHandler();
-  new Character();
+
+  // 스테이지를 클릭하면 캐릭터가 생기도록 설정
+  stageElem.addEventListener("click", function (e) {
+    // 클릭한 위치를 비율로 바꾸기 (전체가 100%라고 생각)
+    // e.clientX / window.innerWidth;
+    // console.log((e.clientX / window.innerWidth) * 100);
+    // 객체로 넣는 이유는 여러 속성을 넣기 위해
+    new Character({
+      xPos: (e.clientX / window.innerWidth) * 100,
+    });
+  });
 })();
