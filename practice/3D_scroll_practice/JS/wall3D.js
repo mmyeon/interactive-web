@@ -57,4 +57,5 @@
   // 윈도우 객체에 리사이즈 이벤트 걸어줌
   window.addEventListener("resize", resizeHandler);
   resizeHandler();
+  new Character();
 })();
