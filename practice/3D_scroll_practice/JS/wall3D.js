@@ -4,6 +4,11 @@
   // 중복되는 부분이라 따로 빼기
   // let maxScrollValue = document.body.offsetHeight - this.window.innerHeight;
   const barElem = document.querySelector(".progress-bar");
+  const stageElem = document.querySelector(".stage");
+  const mousePos = {
+    x: 0,
+    y: 0,
+  };
   let maxScrollValue;
 
   // 윈도우 창사이즈가 바뀌면 maxScrollValue가 갱신하도록 세팅함.
@@ -32,6 +37,21 @@
 
     // progress bar
     barElem.style.width = scrollPer * 100 + "%";
+  });
+
+  window.addEventListener("mousemove", function (e) {
+    // 마우스 현재 위치 얻어오기
+    // console.log(e.clientX, e.clientY);
+
+    // 가운데가 원점, x축도 -1 ~ 1까지, y축도 -1 ~ 1까지
+    mousePos.x = -1 + (e.clientX / window.innerWidth) * 2;
+    mousePos.y = 1 - (e.clientY / window.innerHeight) * 2;
+    // console.log(mousePos);
+    // 현재 왼쪽 상단이 0,0이므로 화면의 중심으로 0,0으로 가져오기. 가운데가 원점이 되도록
+    // rotateX는 x축을 기준으로 회전시키면 마우스포지션 Y의 영향을 받음
+    // 움직임 폭이 좁아서 움직임 폭을 키우기 위해 5씩 곱해줌
+    stageElem.style.transform =
+      "rotateX( " + mousePos.y * 5 + "deg) rotateY( " + mousePos.x * 5 + "deg)";
   });
 
   // 윈도우 객체에 리사이즈 이벤트 걸어줌
