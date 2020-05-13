@@ -1,7 +1,14 @@
 // 전역변수를 피하기 위해 즉시실행함수 사용하기
 (function () {
   const houseElem = document.querySelector(".house");
-  let maxScrollValue = document.body.offsetHeight - this.window.innerHeight;
+  // 중복되는 부분이라 따로 빼기
+  // let maxScrollValue = document.body.offsetHeight - this.window.innerHeight;
+  let maxScrollValue;
+
+  // 윈도우 창사이즈가 바뀌면 maxScrollValue가 갱신하도록 세팅함.
+  function resizeHandler() {
+    maxScrollValue = document.body.offsetHeight - this.window.innerHeight;
+  }
 
   window.addEventListener("scroll", function () {
     //  전체 문서에서 스크롤 된 비율 구하기
@@ -19,4 +26,8 @@
     const zMove = (pageYOffset / maxScrollValue) * 980 - 490;
     houseElem.style.transform = "translateZ( " + zMove + "vw)";
   });
+
+  // 윈도우 객체에 리사이즈 이벤트 걸어줌
+  window.addEventListener("resize", resizeHandler);
+  resizeHandler();
 })();
