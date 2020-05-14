@@ -66,6 +66,7 @@
     // 객체로 넣는 이유는 여러 속성을 넣기 위해
     new Character({
       xPos: (e.clientX / window.innerWidth) * 100,
+      speed: Math.random() * 0.5 + 0.2,
     });
   });
 })();

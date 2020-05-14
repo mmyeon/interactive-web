@@ -44,7 +44,10 @@ function Character(info) {
   this.lastScrollTop = 0;
   // xPos를 객체의 속성으로도 등록해줌. 접근할 수 있도록.
   this.xPos = info.xPos;
-  this.speed = 0.3;
+  // this.speed = 0.3;
+  // 캐릭터 개별 속도 가지기
+  this.speed = info.speed;
+  console.log(info.speed);
   // 움직임 방향 알려주는 속성 추가
   this.direction;
   // 좌우 이동 중인지 아닌지 판별
