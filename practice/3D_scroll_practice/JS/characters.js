@@ -116,7 +116,7 @@ Character.prototype = {
       // 애니메이션이 자연스러우려면 최소 24 ~ 30프레임이 되어야 하는데
       // 키다운은 초당 10프레임이기에 움직임이 버벅이고 끊기고 부자연스러운 것
       // 키다운이 아닌 requestAnimationFrame 활용해야함
-      console.log("키다운");
+      // console.log("키다운");
       // self.lastScrollLeft = this.pageXOffset;
       // console.log(pageXoffset);
       // console.log(self.lastScrollLeft);
@@ -144,16 +144,28 @@ Character.prototype = {
     window.addEventListener("keyup", function (e) {
       self.mainElem.classList.remove("running");
       this.cancelAnimationFrame(self.rafId);
+      // console.log(self.runningState);
+      self.runningState = false;
     });
   },
 
   // 캐릭터 위치 갱신
   run: function (self) {
+    // 벽 뚫기 전의 위치 찾기
+    // console.log(self.xPos);
+
     // 캐릭터가 이동하도록 설정
     if (self.direction == "left") {
       self.xPos -= self.speed;
     } else if (self.direction == "right") {
       self.xPos += self.speed;
+    }
+
+    if (self.xPos < 2) {
+      self.xPos = 2;
+    }
+    if (self.xPos > 88) {
+      self.xPos = 88;
     }
 
     // self 오류나서 확인하기위해 찍어봄
