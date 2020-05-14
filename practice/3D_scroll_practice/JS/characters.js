@@ -84,8 +84,8 @@ Character.prototype = {
 
       // 현재 스크롤 위치 가져오기
       // 이전 스크롤 위치와 현재 스크롤 위치를 비교
-      console.log("self.lastScrollTop: ", self.lastScrollTop);
-      console.log("pageYOffset:", pageYOffset);
+      // console.log("self.lastScrollTop: ", self.lastScrollTop);
+      // console.log("pageYOffset:", pageYOffset);
 
       if (self.lastScrollTop > this.pageYOffset) {
         // 이전 스크롤 위치가 크다면 : 스크롤 올림
@@ -95,6 +95,19 @@ Character.prototype = {
         self.mainElem.setAttribute("data-direction", "forward");
       }
       self.lastScrollTop = this.pageYOffset;
+    });
+
+    window.addEventListener("keydown", function (e) {
+      // self.lastScrollLeft = this.pageXOffset;
+      // console.log(pageXoffset);
+      // console.log(self.lastScrollLeft);
+      // 키보드의 키마다 고유의 값이 있음.
+      // console.log(e.keyCode);
+      if (e.keyCode == 37) {
+        self.mainElem.setAttribute("data-direction", "left");
+      } else if (e.keyCode == 39) {
+        self.mainElem.setAttribute("data-direction", "right");
+      }
     });
   },
 };
