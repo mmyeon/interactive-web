@@ -33,6 +33,11 @@ body {
   transition: background 0.5s;
 }
 
+body[data-char="ragirl"] {
+  background: #ff7200;
+  transition: 0.5s;
+}
+
 .world {
   /* 스크롤시 문서가 위로 올라가지 않도록 고정 */
   position: fixed;
@@ -363,8 +368,10 @@ body[data-char="ragirl"] .character-leg-left .face-back {
 
 /* character button */
 .select-character {
+  /* 나란히 위치 */
   display: flex;
   align-items: center;
+  /* 스크롤해도 고정되도록 포지션 설정 */
   position: fixed;
   right: 10px;
   top: 10px;
@@ -390,6 +397,8 @@ body[data-char="ragirl"] .character-leg-left .face-back {
   background-image: url("../images/ragirl_head_front.png");
   opacity: 0.5;
 }
+
+/* 바디에 설정된 데이터 캐릭터에 따라서 opacity 개별 적용 */
 body[data-char="ragirl"] .select-character-btn-ilbuni {
   opacity: 0.5;
 }

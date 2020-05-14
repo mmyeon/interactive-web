@@ -4,6 +4,7 @@
   // 중복되는 부분이라 따로 빼기
   // let maxScrollValue = document.body.offsetHeight - this.window.innerHeight;
   const barElem = document.querySelector(".progress-bar");
+  const selectCharacterElem = document.querySelector(".select-character");
   const stageElem = document.querySelector(".stage");
   const mousePos = {
     x: 0,
@@ -56,7 +57,6 @@
 
   // 윈도우 객체에 리사이즈 이벤트 걸어줌
   window.addEventListener("resize", resizeHandler);
-  resizeHandler();
 
   // 스테이지를 클릭하면 캐릭터가 생기도록 설정
   stageElem.addEventListener("click", function (e) {
@@ -69,4 +69,13 @@
       speed: Math.random() * 0.5 + 0.2,
     });
   });
+
+  selectCharacterElem.addEventListener("click", function (e) {
+    // 캐릭터를 선택했을 때 data-char이 잘 오는지 확인
+    // console.log(e.target.getAttribute("data-char"));
+    const value = e.target.getAttribute("data-char");
+    document.body.setAttribute("data-char", value);
+  });
+
+  resizeHandler();
 })();
