@@ -104,10 +104,19 @@ Character.prototype = {
       // 키보드의 키마다 고유의 값이 있음.
       // console.log(e.keyCode);
       if (e.keyCode == 37) {
+        // 왼쪽
         self.mainElem.setAttribute("data-direction", "left");
+        // 걷는 움직임 추가
+        self.mainElem.classList.add("running");
       } else if (e.keyCode == 39) {
+        // 오른쪽
         self.mainElem.setAttribute("data-direction", "right");
+        // 걷는 움직임 추가
+        self.mainElem.classList.add("running");
       }
+    });
+    window.addEventListener("keyup", function (e) {
+      self.mainElem.classList.remove("running");
     });
   },
 };
