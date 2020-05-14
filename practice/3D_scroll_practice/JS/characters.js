@@ -47,6 +47,11 @@ function Character(info) {
   this.speed = 0.3;
   // 움직임 방향 알려주는 속성 추가
   this.direction;
+  // 좌우 이동 중인지 아닌지 판별
+  this.runningState = false;
+  // requestAnimationFrame 아이디 저장할 속성만들기
+  // 계속 활용하기 위해서 속성으로 저장해두는 것
+  this.rafId;
   this.init();
   //   생성자로 생성한 인스턴스 객체가 공통으로 사용하는 속성은 프로토타입 객체에 만든다.
 }
@@ -103,12 +108,15 @@ Character.prototype = {
       self.lastScrollTop = this.pageYOffset;
     });
 
+    // 키 누른 한번만 실행
     window.addEventListener("keydown", function (e) {
+      if (self.runningState) return;
+
       // 키다운이벤트가 얼마나 발생하는지 체크
       // 애니메이션이 자연스러우려면 최소 24 ~ 30프레임이 되어야 하는데
       // 키다운은 초당 10프레임이기에 움직임이 버벅이고 끊기고 부자연스러운 것
       // 키다운이 아닌 requestAnimationFrame 활용해야함
-      // console.log("키다운");
+      console.log("키다운");
       // self.lastScrollLeft = this.pageXOffset;
       // console.log(pageXoffset);
       // console.log(self.lastScrollLeft);
@@ -121,6 +129,7 @@ Character.prototype = {
         // 걷는 움직임 추가
         self.mainElem.classList.add("running");
         self.run(self);
+        self.runningState = true;
       } else if (e.keyCode == 39) {
         // 오른쪽
         self.direction = "right";
@@ -128,15 +137,19 @@ Character.prototype = {
         // 걷는 움직임 추가
         self.mainElem.classList.add("running");
         self.run(self);
+        self.runningState = true;
       }
     });
+
     window.addEventListener("keyup", function (e) {
       self.mainElem.classList.remove("running");
+      this.cancelAnimationFrame(self.rafId);
     });
   },
+
+  // 캐릭터 위치 갱신
   run: function (self) {
     // 캐릭터가 이동하도록 설정
-
     if (self.direction == "left") {
       self.xPos -= self.speed;
     } else if (self.direction == "right") {
@@ -149,8 +162,8 @@ Character.prototype = {
     // 바뀐 속성 값을 CSS 스타일에도 적용
     self.mainElem.style.left = self.xPos + "%";
 
-    // 반복시키기
-    requestAnimationFrame(function () {
+    // 반복시키기.
+    self.rafId = requestAnimationFrame(function () {
       self.run(self);
     });
   },
