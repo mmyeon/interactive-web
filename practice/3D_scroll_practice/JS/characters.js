@@ -39,6 +39,8 @@ function Character(info) {
   this.mainElem.style.left = info.xPos + "%";
   // 스크롤 중인지 아닌지 체크하는 상태
   this.scrollState = false;
+  // 바로 이전(마지막) 스크롤 위치
+  this.lastScrollTop = 0;
   this.init();
   //   생성자로 생성한 인스턴스 객체가 공통으로 사용하는 속성은 프로토타입 객체에 만든다.
 }
@@ -68,7 +70,7 @@ Character.prototype = {
       // 조건문에서 값을 가지고 있으면 true, 없으면 false
       if (!self.scrollState) {
         self.mainElem.classList.add("running");
-        console.log("running 클래스 붙었음");
+        // console.log("runni ng 클래스 붙었음");
       }
 
       // 0.5초 뒤에 함수 실행, setTimeout은 숫자를 리턴함
@@ -78,7 +80,21 @@ Character.prototype = {
         self.mainElem.classList.remove("running");
       }, 500);
 
-      console.log(self.scrollState);
+      // console.log(self.scrollState);
+
+      // 현재 스크롤 위치 가져오기
+      // 이전 스크롤 위치와 현재 스크롤 위치를 비교
+      console.log("self.lastScrollTop: ", self.lastScrollTop);
+      console.log("pageYOffset:", pageYOffset);
+
+      if (self.lastScrollTop > this.pageYOffset) {
+        // 이전 스크롤 위치가 크다면 : 스크롤 올림
+        self.mainElem.setAttribute("data-direction", "backward");
+      } else {
+        //  현재 스크롤 위치가 크다면: 스크롤 내림
+        self.mainElem.setAttribute("data-direction", "forward");
+      }
+      self.lastScrollTop = this.pageYOffset;
     });
   },
 };
