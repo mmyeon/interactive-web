@@ -37,6 +37,8 @@ function Character(info) {
   //   console.log(info);
   //    캐릭터의 left값으로 클릭된 위치를 넣음
   this.mainElem.style.left = info.xPos + "%";
+  // 스크롤 중인지 아닌지 체크하는 상태
+  this.scrollState = false;
   this.init();
   //   생성자로 생성한 인스턴스 객체가 공통으로 사용하는 속성은 프로토타입 객체에 만든다.
 }
@@ -56,9 +58,27 @@ Character.prototype = {
     const self = this;
     // 이벤트핸들러에서 this는 이벤트리스너를 실행한 객체. window
     window.addEventListener("scroll", function () {
+      // 스크롤되는 동안은 self.scrollState의 셋타임아웃 함수를 취소함. 스크롤 중에서는 실행하지 않도록.
+      // 스크롤이 멈추면 clearTImeout함수가 실행이 안되니까 self.scrollState에 값이 들어가게 됨
+      this.clearTimeout(self.scrollState);
+      // this.clearTimeout(self.scrollState);
       // console.log(this);
       // 우리가 원하는 this는 캐릭터생성자로 생성해낸 인스턴스 객체
-      self.mainElem.classList.add("running");
+
+      // 조건문에서 값을 가지고 있으면 true, 없으면 false
+      if (!self.scrollState) {
+        self.mainElem.classList.add("running");
+        console.log("running 클래스 붙었음");
+      }
+
+      // 0.5초 뒤에 함수 실행, setTimeout은 숫자를 리턴함
+      self.scrollState = setTimeout(function () {
+        // 스크롤을 멈춘 상태
+        self.scrollState = false;
+        self.mainElem.classList.remove("running");
+      }, 500);
+
+      console.log(self.scrollState);
     });
   },
 };
