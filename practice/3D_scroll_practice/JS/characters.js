@@ -47,7 +47,7 @@ function Character(info) {
   // this.speed = 0.3;
   // 캐릭터 개별 속도 가지기
   this.speed = info.speed;
-  console.log(info.speed);
+  // console.log(info.speed);
   // 움직임 방향 알려주는 속성 추가
   this.direction;
   // 좌우 이동 중인지 아닌지 판별
